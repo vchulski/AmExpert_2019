@@ -160,6 +160,7 @@ def prepare_full_df(
     customer_demographics_data = preprocess_demographics_data(
         demographics, processing_type
     )
+
     df = pd.merge(df, customer_demographics_data, on="customer_id", how="left")
 
     assert len(df) == len(dataframe)
@@ -181,9 +182,9 @@ def prepare_full_df(
 
     customer_transaction_data = preprocess_customer_transaction(customer_transaction)
     aggregations = {
-        "selling_price": ["mean", "std", "min", "max"],
-        "other_discount": ["mean", "std", "min", "max"],
-        "coupon_discount": ["mean", "std", "min", "max"],
+        "selling_price": ["mean", "std", "min", "max", "median"],
+        "other_discount": ["mean", "std", "min", "max", "median"],
+        "coupon_discount": ["mean", "std", "min", "max", "median"],
     }
     transacation_customer_aggs = customer_transaction_data.groupby("customer_id").agg(
         aggregations

@@ -73,7 +73,7 @@ def preprocess_demographics_data(demographics, processing_type="custom"):
         df["age_range"] = df.loc[:, "age_range"].apply(age_range_to_label)
         df["marital_status"] = df.loc[:, "marital_status"].apply(
             marital_status_to_label
-        )
+        ).astype(int)
         df["family_size"] = df.loc[:, "family_size"].apply(family_size_to_label)
         df["no_of_children"] = df.loc[:, "no_of_children"].apply(children_no_to_label)
         df["my_children_per_family"] = (
