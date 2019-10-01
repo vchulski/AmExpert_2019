@@ -1,7 +1,7 @@
 ## AmExpert 2019
 ![img](https://github.com/vchulski/AmExpert_2019/blob/master/img/banner.jpg)
 
-**Brief problem description: ** 
+**Brief problem description:** 
 
  - Customers receive coupons under various campaigns and may choose to redeem it.
  - They can redeem the given coupon for any valid product for that coupon as per coupon item mapping within the duration between campaign start date and end date
