@@ -1,6 +1,8 @@
 ## AmExpert 2019
 ![img](https://github.com/vchulski/AmExpert_2019/blob/master/img/banner.jpg)
 
+https://datahack.analyticsvidhya.com/contest/amexpert-2019-machine-learning-hackathon/
+
 **Brief problem description:** 
 
  - Customers receive coupons under various campaigns and may choose to redeem it.
