@@ -1,6 +1,7 @@
 import plac
 import os
 import pandas as pd
+import numpy as np
 
 from sklearn import metrics
 from sklearn import model_selection
@@ -9,7 +10,6 @@ import lightgbm
 import catboost
 
 PATH_TO_DATA = "../input/"
-
 
 @plac.annotations(
     train_name=("name of train file in input folder: ", "positional", None, str),
@@ -40,7 +40,8 @@ def main(train_name, test_name, model_name, folds_num, predict):
     if model_name == "lgb":
         clf = lightgbm.LGBMClassifier()
     elif model_name == "cat":
-        clf = catboost.CatBoostClassifier(verbose=0)
+        categ_feat_idx = np.where(X.dtypes == 'category')[0]
+        clf = catboost.CatBoostClassifier(verbose=0, cat_features=categ_feat_idx)
     else:
         print("Unknown model specified")
         return

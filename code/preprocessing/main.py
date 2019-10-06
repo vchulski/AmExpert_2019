@@ -1,10 +1,13 @@
 __author__ = "Vadim_Shestopalov"
 __email__ = "vdmshestopalov@gmail.com"
 
-# TO DO:
-# add OHE transformration
-# add proper verbose
+# TODO: add EDA mode, OHE transforamtion, CATEGORICAL transofmration and VERBOSE
+# TODO: check isolation forest features (look like doesnt really matter but improve score a little)
+# TODO: check pseudo labeling approach (need to write a script)
+# TODO: prepare script for stacking
+# TODO: check how i could add dates into the merging process
 
+# TODO: PAVEL PLESKOV ADVICE: use rank for blending!!!
 
 import os
 import plac
@@ -66,7 +69,7 @@ def main(output_name, processing_type):
         processing_type,
     )
     transformed_test.to_csv(os.path.join(PATH_TO_DATA, "test_"+output_name + ".csv"))
-    print(f"Transformed train saved to: {str(os.path.join(PATH_TO_DATA, 'test' + output_name + '.csv'))}")
+    print(f"Transformed train saved to: {str(os.path.join(PATH_TO_DATA, 'test_' + output_name + '.csv'))}")
 
 
 def preprocess_campaign_data(campaign, for_eda=False):
@@ -98,6 +101,10 @@ def preprocess_campaign_data(campaign, for_eda=False):
         / (60 * 24)
     ).astype(int)
 
+    df["start_dow"] = (
+        df["start_date"].apply(lambda ts: ts.dayofweek).astype(np.int8)
+    )
+
     if not for_eda:
         df = df.drop(["start_date", "end_date"], axis=1)
 
@@ -113,7 +120,7 @@ def preprocess_item_data(item, processing_type="custom"):
             lbl = preprocessing.LabelEncoder()
             lbl.fit(list(df[f].values))
             df[f] = lbl.transform(list(df[f].values))
-    elif processing_type == "ohe":  # TO DO: add this type
+    elif processing_type == "ohe":  # TODO: OHE
         pass
     elif processing_type == "cat":
         for c in cols:
