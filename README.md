@@ -13,6 +13,9 @@ https://datahack.analyticsvidhya.com/contest/amexpert-2019-machine-learning-hack
 
 **Metric:** ROC_AUC score
 
+**Leaderboard scores:**
+Public: 0.8942 (129/993 place)
+Private: 
 
 
 
