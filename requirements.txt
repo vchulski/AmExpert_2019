@@ -1,7 +1,7 @@
 catboost==0.17.3
 cycler==0.10.0
 graphviz==0.13
-joblib==0.13.2
+joblib==1.2.0
 kiwisolver==1.1.0
 lightgbm==2.3.0
 matplotlib==3.1.1
